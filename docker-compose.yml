@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+
+  cube:
+    image: cubejs/cube:latest
+    environment:
+      - CUBEJS_DEV_MODE=true
+    volumes:
+      - /Users/juanmartinelorriaga/cube-project/cube-data:/cube/conf
+    ports:
+      - 4000:4000
+
+  db:
+    image: postgres:latest
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres 
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=postgres
+    volumes:
+      - /Users/juanmartinelorriaga/cube-project/database:/var/lib/postgresql/data/
+    ports:
+      - 5432:5432
